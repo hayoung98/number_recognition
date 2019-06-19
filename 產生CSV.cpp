@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+	//tes VCS
 	ofstream file;
 	//writefile
 	file.open("wally_all.csv");
