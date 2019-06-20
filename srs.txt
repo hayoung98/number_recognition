@@ -6,6 +6,12 @@
     為保持某些重要文件能在公平環境下被辨識的重要系統，以確保每筆資料能透過本系統來公正的判斷數字。因此利用本系統做為一個公正的裁決者，使資料被判讀時不會受人為因素的干擾。
 
 2.1.2 Intend Audience and Reading Suggestions 
+本文主要內容共分成下列幾個部分:
+  1)2.2.1 Product Perspective:如何操作本系統
+  2)2.2.2 Product Functions:詳細敘述了產品的具體功能
+  3)2.2.4 Operating Environment:此系統運作平台之規範
+  4)2.4.3 Functional Requirements:敘述此系統之功能性需求
+  5)2.5.1 Performance Requirements:敘述此系統之非功能性需求
 
 2.1.3 Project Scope
   -本數字辨識系統之範圍包括:
