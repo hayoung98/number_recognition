@@ -75,21 +75,10 @@ class Number_Recognition():
         d6 = dense(d5, f_size=120, dr=True, lastLayer=False)
         d7 = dense(d6, f_size=84, dr=True, lastLayer=False)
         d8 = dense(d7, f_size=10, dr=True, lastLayer=False)
-        d9 = dense(d8, f_size=2, dr=False, lastLayer=True)
+        #d9 = dense(d8, f_size=2, dr=False, lastLayer=True)
 
-        return Model(d0, d9)
+        return Model(d0, d8)
 
-    #MSE
-    """
-    def smoothL1(self, y_true, y_pred):
-        x = K.abs(y_true - y_pred)
-        x = K.switch(x < self.HUBER_DELTA, 0.5 * x ** 2, self.HUBER_DELTA * (x - 0.5 * self.HUBER_DELTA))
-        return K.sum(x)
-    """
-    def smoothL1(self, y_true, y_pred):
-        x = K.abs(y_true - y_pred)
-        x = x ** 2
-        return K.sum(x)
 
     def train(self, epochs, batch_size=1, sample_interval=50):
 

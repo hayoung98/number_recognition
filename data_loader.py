@@ -53,27 +53,34 @@ class DataLoader():
             self.paths = []
             self.values = []
             file.seek(0)
-            imgs = []
             reader = csv.reader(file, delimiter=",")
             for index, row in enumerate(reader):
                 self.paths.append(row[0])
-                self.values.append(row[1])
+                self.values.append(int(row[1]))
 
-
+        self.values = np.array(self.values)
+        index = [i for i in range(len(self.paths))]
+        np.random.shuffle(index)
+        batch_imgs = np.random.choice(index, size=batch_size)
+        imgs, labels = [], []
+        """        
         indices = (len(self.values)*np.random.rand(batch_size)).astype(int)
-        ii = (len(self.values)*np.random.rand(batch_size))
         img = imgs[indices]
         img_n = np.array(img) / 127.5 - 1.
+        """
 
-        v = []
-        for idx in indices:
-            value_ohe = self.one_hot_encode(idx, num_classes=4)
-            v.append(value_ohe)
-        values_n = np.array(v)
-        return img_n, values_n
+        for j in range(batch_size):
+            imgs.append(self.imread(self.paths[batch_imgs[j]]))
+            value_ohe = self.one_hot_encode(self.values[batch_imgs[j]], num_classes=10)
+            labels.append(value_ohe)
+
+        imgs = np.array(imgs) / 127.5 - 1.
+        labels = np.array(labels)
+
+        return imgs, labels
 
     def imread(self, path):
-        return cv2.imread(path,cv2.IMREAD_GRAYSCALE).astype(np.float)
+        return scipy.misc.imread(path).astype(np.float)
 
     def one_hot_encode(self, y, num_classes=0):
         return np.squeeze(np.eye(num_classes)[y.reshape(-1)])
