@@ -47,6 +47,7 @@
 由於本系統之目的在於確保數字辨識的正確性，對於數字辨識之準確率的控管相當重要。所以對於資料讀取後的辨識，本系統採取較優先的順序來處理。其他輔助的詳細項目視需求會再陸續增加。
 
 2.4.2 Stimulus/Response Sequences 
+當我們將一張224*224(Pixel)的圖片放進對應的資料夾時，按下執行按鈕，等待整個系統執行完成時，系統會將輸出的結果顯示在螢幕上。
 2.4.3 Functional Requirements 
 2.5 Other Nonfunctional Requirements
 2.5.1 Performance Requirements (4%)
