@@ -1,0 +1,140 @@
+\documentclass{beamer}
+\usepackage{CJKutf8}
+\usetheme{Madrid}
+\title{Number Recognition}
+\author{Team3}
+\date{15, June, 2019}
+
+
+\subject{Theoretical Computer Science}
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+\begin{document}
+\begin{CJK*}{UTF8}{bsmi}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\subsection*{Our team}
+\begin{frame}{Introduction}{Our team}
+  \begin{itemize}
+  \item {
+    1052063 朱樂謙    
+  }
+  \item {
+    1051524 莊子毅
+  }
+  \item {
+    1053334 陳揆中
+  }
+  \item {
+    1053342 曹育維
+  }
+  \end{itemize}
+\end{frame}
+\subsection*{Problem we're trying to solve}
+\begin{frame}{Introduction}{Problem we're trying to solve}
+老師在批改學生考卷時，常常看到學生寫的阿拉伯數字歪七扭八就直接算錯。而之後當學生想要跟老師爭論時，老師就可以用我們這個程式來讓電腦公正的判斷到底學生所寫的數字是多少，這樣雙方都可以接受。
+\end{frame}
+
+
+\section{Dataset}
+\subsection*{dataset introduction}
+\begin{frame}{Dataset}{dataset introduction}
+  \begin{itemize}
+  \item {
+   Dataset是由我們親自寫下 0,1,2,3,4,5,6,7,8,9 各100次之後拍照，並裁剪成 224*224(像素)的大小。總共1000張圖片。
+  }
+  \end{itemize}
+\end{frame}
+\subsection*{How many paired training samples in your dataset?}
+\begin{frame}{Dataset}{How many paired training samples in your dataset?}
+  \begin{itemize}
+  \item {
+   我們有1000張training用的照片。
+  }
+  \end{itemize}
+\end{frame}
+\subsection*{How many paired training samples in your dataset?}
+\begin{frame}{Dataset}{How many paired validating samples in your dataset?}
+  \begin{itemize}
+  \item {
+   我們有100張validating用的照片。
+  }
+  \end{itemize}
+\end{frame}
+
+\section{Experimental Evaluation}
+\subsection*{Experimental environment}
+\begin{frame}{Experimental Evaluation}{Experimental environment}
+  \begin{itemize}
+  \item {
+   OS : Windows 10
+  }
+  \item {
+   CPU : Intel Core i5-6500 @ 3.20GHz
+  }
+  \item {
+   memory : 16GB
+  }
+  \end{itemize}
+\end{frame}
+\subsection*{How many epochs you set for training?}
+\begin{frame}{Experimental Evaluation}{How many epochs you set for training?}
+  \begin{itemize}
+  \item {
+  epochs:100
+  }
+  \end{itemize}
+\end{frame}
+
+\section*{Authorship}
+\subsection*{Job scheduling}
+\begin{frame}{Authorship}{Job scheduling}
+  \begin{itemize}
+  \item {
+    1052063 朱樂謙
+  }
+   \begin{itemize}
+   \item 編寫code\\[0.5cm]
+   \end{itemize}
+  \item {
+    1051524 莊子毅
+  }
+   \begin{itemize}
+   \item 製作投影片和SRS\\[0.5cm]
+   \end{itemize}
+  \item {
+    1053334 陳揆中
+  }
+   \begin{itemize}
+   \item 蒐集dataset和編寫SRS\\[0.5cm]
+   \end{itemize}
+  \item {
+    1053342 曹育維
+  }
+   \begin{itemize}
+   \item 蒐集dataset和編寫SRS\\[0.5cm]
+   \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+
+
+\end{CJK*}
+\end{document}
+
+

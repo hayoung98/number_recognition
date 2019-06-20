@@ -1,0 +1,215 @@
+\documentclass{scrreprt}
+\usepackage{CJKutf8}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Software Requirement Specification},    % title
+    pdfauthor={Jean-Philippe Eisenbarth},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{1.0 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\begin{document}
+\begin{CJK*}{UTF8}{bsmi}
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+        \Huge{SOFTWARE REQUIREMENTS\\ SPECIFICATION}\\
+        \vspace{1.9cm}
+        for\\
+        \vspace{1.9cm}
+        $<$Number Recognition$>$\\
+        \vspace{1.9cm}
+        \LARGE{Version \myversion approved}\\
+        \vspace{1.9cm}
+        Prepared by 1051524 莊子毅\hspace{0.5cm}1052063 朱樂謙\hspace{0.5cm}1053334 陳揆中\hspace{0.5cm}1053342 曹育維\\
+        \vspace{1.9cm}
+        $<$Team3$>$\\
+        \vspace{1.9cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+\tableofcontents
+
+
+\chapter*{Revision History}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+	    Name & Date & Reason For Changes & Version\\
+        \hline
+	    21 & 22 & 23 & 24\\
+        \hline
+	    31 & 32 & 33 & 34\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+
+\section{Purpose}
+$<$為保持某些重要文件能在公平環境下被辨識的重要系統，以確保每筆資料能透過本系統來公正的判斷數字。因此利用本系統做為一個公正的裁決者，使資料被判讀時不會受人為因素的干擾。.$>$
+
+
+\section{Intended Audience and Reading Suggestions}
+$<$Describe the different types of reader that the document is intended for, 
+such as developers, project managers, marketing staff, users, testers, and 
+documentation writers. Describe what the rest of this SRS contains and how it is 
+organized. Suggest a sequence for reading the document, beginning with the 
+overview sections and proceeding through the sections that are most pertinent to 
+each reader type.$>$
+
+\section{Project Scope}
+$<$辨識各種類型圖片中的數字，而圖片數字的光暗、角度、形狀、位置的不同，都會影響到程式預測出來的結果。$>$
+
+
+\chapter{Overall Description}
+
+\section{Product Perspective}
+$<$Describe the context and origin of the product being specified in this SRS.  
+For example, state whether this product is a follow-on member of a product 
+family, a replacement for certain existing systems, or a new, self-contained 
+product. If the SRS defines a component of a larger system, relate the 
+requirements of the larger system to the functionality of this software and 
+identify interfaces between the two. A simple diagram that shows the major 
+components of the overall system, subsystem interconnections, and external 
+interfaces can be helpful.$>$
+
+\section{Product Functions}
+$<\\$
+\hspace{2cm}判斷數字\\
+\hspace{4cm}-說明: 能夠判定輸入的圖像是甚麼數字\\
+\hspace{4cm}-輸入: 224*224的jpg圖，圖片內容為0~9其中一個數字\\
+\hspace{4cm}-處理: 判定圖片中的數字與訓練的結果比對最相似於哪個數字\\
+\hspace{4cm}-輸出: 顯示與圖片最相似的數字\\$>$
+
+\section{User Classes and Characteristics}
+$<$當對於手寫的數字判定與他人分歧時希望有公正判定時，希望能夠透過此軟體解決問題的人為主要客群。$>$
+
+\section{Operating Environment}
+$<$本系統適用於Windows作業系統的python3.6環境下。$>$
+
+\section{Design and Implementation Constraints}
+$<$此程式設計能夠讀取圖檔，並且判定圖片內容，但限制輸入為224*224的JPG圖檔且內容的數字必須是直立的不能太過傾斜。$>$
+
+
+
+
+\chapter{External Interface Requirements}
+
+\section{User Interfaces}
+$<$我們的使用者介面是直接使用pycharm來呈現，當您輸入一張圖片，程式會判斷輸入圖片的數字為多少且機率為何。\\例如圖片中的數字為1的機率為0.78、為7的機率為0.22。$>$
+
+\section{Hardware Interfaces}
+$<$Describe the logical and physical characteristics of each interface between 
+the software product and the hardware components of the system. This may include 
+the supported device types, the nature of the data and control interactions 
+between the software and the hardware, and communication protocols to be 
+used.$>$
+
+\section{Software Interfaces}
+$<\\$使用Pycharm來編譯程式並執行，其中有安裝到的軟體有：\\
+1.	numpy\\
+2.	opencv\\
+3.	scikit-learn\\
+4.	scipy\\
+5.	sklearn\\
+6.	tensorflow\\
+7.	keras\\$>$
+
+
+\chapter{System Features}
+$<$This template illustrates organizing the functional requirements for the 
+product by system features, the major services provided by the product. You may 
+prefer to organize this section by use case, mode of operation, user class, 
+object class, functional hierarchy, or combinations of these, whatever makes the 
+most logical sense for your product.$>$
+
+
+\section{Description and Priority}
+$<$由於本系統之目的在於確保數字辨識的正確性，對於數字辨識之準確度的控管相當重要。所以對於資料讀取後的辨識，本系統採取較優先的順序來處理。其他輔助的詳細項目視需求會再陸續增加。$>$
+
+\section{Stimulus/Response Sequences}
+$<$當我們將一張224*224(Pixel)的圖片放進對應的資料夾時，按下執行按鈕，等待整個系統執行完成時，系統會將輸出的結果顯示在螢幕上。$>$
+
+\section{Functional Requirements}
+$<$Itemize the detailed functional requirements associated with this feature.  
+These are the software capabilities that must be present in order for the user 
+to carry out the services provided by the feature, or to execute the use case.  
+Include how the product should respond to anticipated error conditions or 
+invalid inputs. Requirements should be concise, complete, unambiguous, 
+verifiable, and necessary. Use “TBD” as a placeholder to indicate when necessary 
+information is not yet available.$>$
+
+$<$Each requirement should be uniquely identified with a sequence number or a 
+meaningful tag of some kind.$>$
+
+REQ-1:	REQ-2:
+
+
+\chapter{Other Nonfunctional Requirements}
+
+\section{Performance Requirements}
+$<$If there are performance requirements for the product under various 
+circumstances, state them here and explain their rationale, to help the 
+developers understand the intent and make suitable design choices. Specify the 
+timing relationships for real time systems. Make such requirements as specific 
+as possible. You may need to state performance requirements for individual 
+functional requirements or features.$>$
+
+\section{Safety Requirements}
+$<$Specify those requirements that are concerned with possible loss, damage, or 
+harm that could result from the use of the product. Define any safeguards or 
+actions that must be taken, as well as actions that must be prevented. Refer to 
+any external policies or regulations that state safety issues that affect the 
+product’s design or use. Define any safety certifications that must be 
+satisfied.$>$
+
+\section{Security Requirements}
+$<$Specify any requirements regarding security or privacy issues surrounding use 
+of the product or protection of the data used or created by the product. Define 
+any user identity authentication requirements. Refer to any external policies or 
+regulations containing security issues that affect the product. Define any 
+security or privacy certifications that must be satisfied.$>$
+
+
+\chapter{Other Requirements}
+$<$Define any other requirements not covered elsewhere in the SRS. This might 
+include database requirements, internationalization requirements, legal 
+requirements, reuse objectives for the project, and so on. Add any new sections 
+that are pertinent to the project.$>$
+
+\section{Appendix A: Glossary}
+%see https://en.wikibooks.org/wiki/LaTeX/Glossary
+$<$Define all the terms necessary to properly interpret the SRS, including 
+acronyms and abbreviations. You may wish to build a separate glossary that spans 
+multiple projects or the entire organization, and just include terms specific to 
+a single project in each SRS.$>$
+
+\section{Appendix B: Analysis Models}
+$<$Optionally, include any pertinent analysis models, such as data flow 
+diagrams, class diagrams, state-transition diagrams, or entity-relationship 
+diagrams.$>$
+
+\section{Appendix C: To Be Determined List}
+$<$Collect a numbered list of the TBD (to be determined) references that remain 
+in the SRS so they can be tracked to closure.$>$
+\end{CJK*}
+\end{document}
