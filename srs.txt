@@ -10,10 +10,18 @@
 2.2 Overall Description
 2.2.1 Product Perspective
 2.2.2 Product Functions
-此程式能夠判定輸入的圖像是0~9中的哪個數字
+#判斷數字
+-說明: 能夠判定輸入的圖像是甚麼數字
+-輸入: 224*224的jpg圖，圖片內容為0~9其中一個數字
+-處理: 判定圖片中的數字與訓練的結果比對最相似於哪個數字
+-輸出: 顯示與圖片最相似的數字
 2.2.3 User Classes and Characteristics
+
 2.2.4 Operating Environment
+本系統適用於Windows系列作業系統的python3.6環境下
 2.2.5 Design and Implementation Constraints
+此程式設計能夠讀取圖檔，並且判定圖片內容，但限制輸入為224*224的JPG圖檔且內容的數字必須是直立的不能太過傾斜。
 2.2.6 Assumptions and Dependencies
+
 2.3.1 User Interfaces
 我們的使用者介面是直接使用pycharm來呈現，當您輸入一張圖片，程式會判斷輸入圖片的數字為多少且機率為何。例如圖片中的數字為1的機率為78%、為7的機率為22%。
