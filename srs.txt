@@ -13,6 +13,7 @@
 
 2.2 Overall Description
 2.2.1 Product Perspective
+操作流程為將一張內224*224的JPG檔更改為指定名稱後放置在指定資料夾下，並執行程式，程式執行完成後能夠顯示出該圖片與哪一個數字最相似。
 2.2.2 Product Functions
 #判斷數字
 -說明: 能夠判定輸入的圖像是甚麼數字
@@ -20,9 +21,9 @@
 -處理: 判定圖片中的數字與訓練的結果比對最相似於哪個數字
 -輸出: 顯示與圖片最相似的數字
 2.2.3 User Classes and Characteristics
-當對手寫的數字判定與他人分歧時希望有公正判定時，希望能夠透過此軟體解決問題的人為主要客群
+當對手寫的數字判定與他人分歧時希望有公正判定時，希望能夠透過此軟體解決問題的人為主要客群。
 2.2.4 Operating Environment
-本系統適用於Windows系列作業系統的python3.6環境下
+本系統適用於Windows系列作業系統的python3.6環境下。
 2.2.5 Design and Implementation Constraints
 此程式設計能夠讀取圖檔，並且判定圖片內容，但限制輸入為224*224的JPG圖檔且內容的數字必須是直立的不能太過傾斜。
 2.2.6 Assumptions and Dependencies
