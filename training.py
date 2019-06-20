@@ -88,7 +88,7 @@ class Number_Recognition():
 
                 elapsed_time = datetime.datetime.now() - start_time
                 # Plot the progress
-                print("[Epoch %d/%d] [Batch %d/%d] [Training loss: %f, Training mse: %f] time: %s" % (
+                print("[Epoch %d/%d] [Batch %d/%d] [Training loss: %f, Training acc: %f] time: %s" % (
                     epoch + 1, epochs,
                     batch_i + 1, self.data_loader.n_batches - 1,
                     crossentropy_loss[0], 100 * crossentropy_loss[1],
@@ -98,7 +98,7 @@ class Number_Recognition():
                     self.validation(epoch, batch_i + 1)
 
     def validation(self, epoch, num_batch):
-        imgs, values = self.data_loader.load_data(batch_size=1, is_testing=True)
+        imgs, values = self.data_loader.load_data(batch_size=64, is_testing=True)
         pred_values = self.CNN_Network.predict(imgs)
         print("Validation acc: " + str(
             int(accuracy_score(np.argmax(values, axis=1), np.argmax(pred_values, axis=1)) * 100)) + "%")
@@ -110,4 +110,4 @@ class Number_Recognition():
 if __name__ == '__main__':
     # # training model
     my_CNN_Model = Number_Recognition()
-    my_CNN_Model.train(epochs=100, batch_size=21, sample_interval=1265)
+    my_CNN_Model.train(epochs=100, batch_size=4, sample_interval=1266)
