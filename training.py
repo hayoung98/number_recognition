@@ -1,6 +1,7 @@
 from __future__ import print_function, division
-from keras.layers import Input, Dense, Flatten, Dropout
+from keras.layers import Input, Dense, Flatten, Dropout, BatchNormalization
 from keras.layers.advanced_activations import LeakyReLU
+from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.models import Model
 from keras.optimizers import Adam
 from sklearn.metrics import accuracy_score
@@ -11,7 +12,6 @@ import numpy as np
 from keras.applications.vgg16 import VGG16
 from keras import backend as K
 from keras.applications.densenet import DenseNet121
-import scipy.misc
 import cv2 as cv2
 
 
@@ -40,6 +40,17 @@ class Number_Recognition():
 
     def build_CNN_Network(self):
 
+        def conv2d(layer_input, filters, f_size=4, stride=2, bn=True):
+            d = Conv2D(filters, kernel_size=f_size, strides=stride, padding='valid')(layer_input)
+            d = LeakyReLU(alpha=0.2)(d)
+            if bn:
+                d = BatchNormalization(momentum=0.8)(d)
+            return d
+
+        def maxpooling2d(layer_input, f_size, stride=2):
+            d = MaxPooling2D(pool_size=f_size, strides=stride, padding='valid')(layer_input)
+            return d
+
         def flatten(layer_input):
             d = Flatten()(layer_input)
             return d
@@ -54,16 +65,19 @@ class Number_Recognition():
                     d = Dropout(0.5)(d)
             return d
 
-        base_model = VGG16(weights='imagenet', include_top=False, input_shape=self.img_shape)
-        for layer in base_model.layers:
-            layer.trainable = False
-        d1 = base_model.output
-        d2 = flatten(d1)
-        d3 = dense(d2, f_size=120, dr=True, lastLayer=False)
-        d4 = dense(d3, f_size=84, dr=True, lastLayer=False)
-        d5 = dense(d4, f_size=4, dr=False, lastLayer=False)
+        # LeNet-5 layers
+        d0 = Input(shape=self.img_shape) # Image input
+        d1 = conv2d(d0, filters=6, f_size=5, stride=1, bn=True)
+        d2 = maxpooling2d(d1, f_size=2, stride=2)
+        d3 = conv2d(d2, filters=16, f_size=5, stride=1, bn=True)
+        d4 = maxpooling2d(d3, f_size=2, stride=2)
+        d5 = flatten(d4)
+        d6 = dense(d5, f_size=120, dr=True, lastLayer=False)
+        d7 = dense(d6, f_size=84, dr=True, lastLayer=False)
+        d8 = dense(d7, f_size=10, dr=True, lastLayer=False)
+        d9 = dense(d8, f_size=2, dr=False, lastLayer=True)
 
-        return Model(base_model.input, d5)
+        return Model(d0, d9)
 
     #MSE
     """
@@ -98,7 +112,7 @@ class Number_Recognition():
                     self.validation(epoch, batch_i + 1)
 
     def validation(self, epoch, num_batch):
-        imgs, values = self.data_loader.load_data(batch_size=64, is_testing=True)
+        imgs, values = self.data_loader.load_data(batch_size=1, is_testing=True)
         pred_values = self.CNN_Network.predict(imgs)
         print("Validation acc: " + str(
             int(accuracy_score(np.argmax(values, axis=1), np.argmax(pred_values, axis=1)) * 100)) + "%")
@@ -110,4 +124,4 @@ class Number_Recognition():
 if __name__ == '__main__':
     # # training model
     my_CNN_Model = Number_Recognition()
-    my_CNN_Model.train(epochs=100, batch_size=4, sample_interval=1266)
+    my_CNN_Model.train(epochs=100, batch_size=4, sample_interval=1)
