@@ -49,7 +49,11 @@
 2.4.2 Stimulus/Response Sequences 
 當我們將一張224*224(Pixel)的圖片放進對應的資料夾時，按下執行按鈕，等待整個系統執行完成時，系統會將輸出的結果顯示在螢幕上。
 2.4.3 Functional Requirements 
+功能需求描述:
+  
 2.5 Other Nonfunctional Requirements
-2.5.1 Performance Requirements (4%)
+2.5.1 Performance Requirements
+效能需求描述:
+  本系統不需要在程式中執行做任何操作，只需要在外部將圖片處理完成，按下程式執行即可跑出結果。
 2.5.2 Safety Requirements (optional)
 2.5.3 Security Requirements (optional) 
