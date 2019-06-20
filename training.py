@@ -74,7 +74,7 @@ class Number_Recognition():
         d5 = flatten(d4)
         d6 = dense(d5, f_size=120, dr=True, lastLayer=False)
         d7 = dense(d6, f_size=84, dr=True, lastLayer=False)
-        d8 = dense(d7, f_size=10, dr=True, lastLayer=False)
+        d8 = dense(d7, f_size=10, dr=True, lastLayer=True)
         #d9 = dense(d8, f_size=2, dr=False, lastLayer=True)
 
         return Model(d0, d8)
@@ -103,14 +103,16 @@ class Number_Recognition():
     def validation(self, epoch, num_batch):
         imgs, values = self.data_loader.load_data(batch_size=1, is_testing=True)
         pred_values = self.CNN_Network.predict(imgs)
+        ac = int(accuracy_score(np.argmax(values, axis=1), np.argmax(pred_values, axis=1)) * 100)
         print("Validation acc: " + str(
-            int(accuracy_score(np.argmax(values, axis=1), np.argmax(pred_values, axis=1)) * 100)) + "%")
+            ac) + "%")
 
         if num_batch == self.data_loader.n_batches - 1:
-            self.CNN_Network.save('./saved_model/NR_epoch_%d.h5' % epoch)
+            if ac >= 10:
+                self.CNN_Network.save_weights('./saved_model/NR_epoch_%d.h5' % epoch+1)
 
 
 if __name__ == '__main__':
     # # training model
     my_CNN_Model = Number_Recognition()
-    my_CNN_Model.train(epochs=100, batch_size=4, sample_interval=1)
+    my_CNN_Model.train(epochs=100, batch_size=4, sample_interval=249)
