@@ -42,3 +42,13 @@
 5.	sklearn
 6.	tensorflow
 7.  
+2.4 System Features
+2.4.1 Description and Priority 
+由於本系統之目的在於確保數字辨識的正確性，對於數字辨識之準確率的控管相當重要。所以對於資料讀取後的辨識，本系統採取較優先的順序來處理。其他輔助的詳細項目視需求會再陸續增加。
+
+2.4.2 Stimulus/Response Sequences 
+2.4.3 Functional Requirements 
+2.5 Other Nonfunctional Requirements
+2.5.1 Performance Requirements (4%)
+2.5.2 Safety Requirements (optional)
+2.5.3 Security Requirements (optional) 
