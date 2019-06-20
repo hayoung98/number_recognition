@@ -16,7 +16,7 @@
 -處理: 判定圖片中的數字與訓練的結果比對最相似於哪個數字
 -輸出: 顯示與圖片最相似的數字
 2.2.3 User Classes and Characteristics
-
+當對手寫的數字判定與他人分歧時希望有公正判定時，希望能夠透過此軟體解決問題的人為主要客群
 2.2.4 Operating Environment
 本系統適用於Windows系列作業系統的python3.6環境下
 2.2.5 Design and Implementation Constraints
