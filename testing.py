@@ -68,9 +68,15 @@ if __name__ == '__main__':
     # # testing model
     my_CNN = Number_Recognition()
     my_CNN_Model = my_CNN.build_CNN_Network()
-    my_CNN_Model.load_weights('./saved_model/NR_epoch_5.h5')
+    imgs = []
+    for i in range(10):
+        for j in range(1,3):
+            path = ("./number_data/test_img/%d (%d).jpg" %(i,j))
+            imgs.append(scipy.misc.imread(path).astype(np.float))
+    my_CNN_Model.load_weights('./saved_model/NR_epoch_21.h5')
     filename = "./number_data/test_img/0 (1).jpg"
     img = cv2.imread(filename).astype(np.float)
-    img = np.array(img) / 127.5 - 1.
+    imgs = np.array(imgs) / 127.5 - 1.
 
-    print(my_CNN_Model.predict(img))
+    for i in range(len(imgs)):
+        print(np.argmax(my_CNN_Model.predict(np.expand_dims(imgs[i],axis=0))))
