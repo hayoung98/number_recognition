@@ -4,11 +4,12 @@ sys.path.append("..")
 from keras.layers import Input, Dense, Flatten, Dropout, BatchNormalization
 from keras.layers.advanced_activations import LeakyReLU
 from keras.layers.convolutional import Conv2D, MaxPooling2D
-from keras.models import Model
+from keras.models import Model,load_model
 from keras.optimizers import Adam
 import cv2
 import numpy as np
 import scipy.misc
+
 
 
 # https://keras-cn.readthedocs.io/en/latest/models/model/
@@ -73,9 +74,8 @@ if __name__ == '__main__':
         for j in range(1,3):
             path = ("./number_data/test_img/%d (%d).jpg" %(i,j))
             imgs.append(scipy.misc.imread(path).astype(np.float))
-    my_CNN_Model.load_weights('./saved_model/NR_epoch_21.h5')
-    filename = "./number_data/test_img/0 (1).jpg"
-    img = cv2.imread(filename).astype(np.float)
+    my_CNN_Model = load_model('./saved_model/NR_epoch_39.h5')
+
     imgs = np.array(imgs) / 127.5 - 1.
 
     for i in range(len(imgs)):

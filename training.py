@@ -109,7 +109,7 @@ class Number_Recognition():
 
         if num_batch == self.data_loader.n_batches - 1:
             if ac >= 10:
-                self.CNN_Network.save_weights('./saved_model/NR_epoch_%d.h5' % (epoch+1))
+                self.CNN_Network.save('./saved_model/NR_epoch_%d.h5' % (epoch+1))
 
 
 if __name__ == '__main__':
